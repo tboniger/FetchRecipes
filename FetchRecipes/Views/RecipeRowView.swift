@@ -45,13 +45,22 @@ struct RecipeRowView: View {
                     .font(.subheadline)
                     .foregroundColor(.secondary)
 
-                if let sourceUrl = recipe.sourceUrl, !sourceUrl.isEmpty {
-                    Text(sourceUrl)
+                if let sourceUrl = recipe.sourceUrl, !sourceUrl.isEmpty, let url = URL(string: sourceUrl) {
+                    Link("View Recipe", destination: url)
                         .font(.footnote)
                         .foregroundColor(.blue)
                         .lineLimit(1)
                         .truncationMode(.tail)
                 }
+                
+                if let youTubeUrl = recipe.youtubeUrl, !youTubeUrl.isEmpty, let url = URL(string: youTubeUrl) {
+                    Link("View Video", destination: url)
+                        .font(.footnote)
+                        .foregroundColor(.blue)
+                        .lineLimit(1)
+                        .truncationMode(.tail)
+                }
+                
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }

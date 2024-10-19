@@ -16,7 +16,7 @@ class RecipeViewModel: ObservableObject {
     @Published var errorMessage: String?
     
     private let networkClient: NetworkClient
-    private let imageLoader: ImageLoader
+    let imageLoader: ImageLoader
 
     init(networkClient: NetworkClient = NetworkClient(),
          imageLoader: ImageLoader = ImageLoader()) {
