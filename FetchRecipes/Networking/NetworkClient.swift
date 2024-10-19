@@ -10,14 +10,18 @@ import Foundation
 class NetworkClient {
     
     var jsonDecoder = JSONDecoder()
-    var urlSession: URLSession = .shared
+    private let session: URLSession
+    
+    init(session: URLSession = .shared) {
+        self.session = session
+    }
 
     func performRequest<T: Decodable>(request: Request) async throws -> T {
         
         do {
             
             let urlRequest = try request.makeURLRequest()
-            let (data, response) = try await self.urlSession.data(for: urlRequest)
+            let (data, response) = try await self.session.data(for: urlRequest)
             guard let httpResponse = response as? HTTPURLResponse else {
                 throw NetworkError.invalidResponse(statusCode: -1)
             }

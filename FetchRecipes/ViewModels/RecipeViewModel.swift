@@ -15,8 +15,15 @@ class RecipeViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     
-    let networkClient = NetworkClient()
-    
+    private let networkClient: NetworkClient
+    private let imageLoader: ImageLoader
+
+    init(networkClient: NetworkClient = NetworkClient(),
+         imageLoader: ImageLoader = ImageLoader()) {
+        self.networkClient = networkClient
+        self.imageLoader = imageLoader
+    }
+
     func recipes() async {
         
         isLoading = true
