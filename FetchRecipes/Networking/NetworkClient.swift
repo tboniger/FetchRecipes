@@ -33,5 +33,6 @@ class NetworkClient {
         } catch {
             throw NetworkError.requestFailed(error)
         }
+
     }
 }
