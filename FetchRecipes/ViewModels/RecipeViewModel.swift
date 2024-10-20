@@ -12,7 +12,7 @@ import SwiftUI
 class RecipeViewModel: ObservableObject {
     
     @Published var recipes: [Recipe] = []
-    @Published var isLoading: Bool = false
+    @Published var isLoading: Bool = true
     @Published var errorMessage: String?
     
     private let networkClient: NetworkClient
@@ -26,7 +26,6 @@ class RecipeViewModel: ObservableObject {
 
     func recipes() async {
         
-        isLoading = true
         errorMessage = nil
 
         Task {

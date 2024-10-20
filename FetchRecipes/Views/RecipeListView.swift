@@ -15,19 +15,24 @@ struct RecipeListView: View {
           NavigationView {
               Group {
                   if viewModel.isLoading {
-                      ProgressView("Loading...")
+                      ProgressView("Loading")
                   } else if let errorMessage = viewModel.errorMessage {
                       Text("Error: \(errorMessage)")
                           .foregroundColor(.red)
                   } else {
-                      List(viewModel.recipes, id: \.uuid) { recipe in
-               
+                      if viewModel.recipes.isEmpty {
+                          Text("No Recipes Available")
+                              .foregroundColor(.gray)
+                      } else {
+                          List(viewModel.recipes, id: \.uuid) { recipe in
+                              
                               RecipeRowView(recipe: recipe, imageLoader: viewModel.imageLoader)
-                          
-                          .listRowInsets(EdgeInsets())
-                          .padding(.vertical, 8)
+                              
+                                  .listRowInsets(EdgeInsets())
+                                  .padding(.vertical, 8)
+                          }
+                          .listStyle(PlainListStyle())
                       }
-                      .listStyle(PlainListStyle())
                   }
               }
               .navigationTitle("Recipes")

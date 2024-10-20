@@ -12,6 +12,7 @@ struct RecipeRowView: View {
     let recipe: Recipe
     let imageLoader: ImageLoader
     @State private var image: UIImage? = nil
+    @Environment(\.openURL) private var openURL
 
     var body: some View {
         HStack(alignment: .top, spacing: 16) {
@@ -44,21 +45,29 @@ struct RecipeRowView: View {
                 Text(recipe.cuisine)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
-
-                if let sourceUrl = recipe.sourceUrl, !sourceUrl.isEmpty, let url = URL(string: sourceUrl) {
-                    Link("View Recipe", destination: url)
-                        .font(.footnote)
-                        .foregroundColor(.blue)
-                        .lineLimit(1)
-                        .truncationMode(.tail)
-                }
-                
-                if let youTubeUrl = recipe.youtubeUrl, !youTubeUrl.isEmpty, let url = URL(string: youTubeUrl) {
-                    Link("View Video", destination: url)
-                        .font(.footnote)
-                        .foregroundColor(.blue)
-                        .lineLimit(1)
-                        .truncationMode(.tail)
+                Spacer()
+                HStack {
+                    if let sourceUrl = recipe.sourceUrl, !sourceUrl.isEmpty, let url = URL(string: sourceUrl) {
+                        Text("View Recipe")
+                            .font(.footnote)
+                            .foregroundColor(.blue)
+                            .lineLimit(1)
+                            .truncationMode(.tail)
+                            .onTapGesture {
+                                openURL(url)
+                            }
+                        Spacer().frame(width: 25)
+                    }
+                    if let youTubeUrl = recipe.youtubeUrl, !youTubeUrl.isEmpty, let url = URL(string: youTubeUrl) {
+                        Text("View Video")
+                            .font(.footnote)
+                            .foregroundColor(.blue)
+                            .lineLimit(1)
+                            .truncationMode(.tail)
+                            .onTapGesture {
+                                openURL(url)
+                            }
+                    }
                 }
                 
             }
