@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 @MainActor
-class RecipeViewModel: ObservableObject {
+class RecipesViewModel: ObservableObject {
     
     @Published var recipes: [Recipe] = []
     @Published var isLoading: Bool = true
@@ -26,6 +26,7 @@ class RecipeViewModel: ObservableObject {
 
     func recipes() async {
         
+        isLoading = true
         errorMessage = nil
 
         Task {
@@ -34,10 +35,13 @@ class RecipeViewModel: ObservableObject {
                 let response: RecipeResponse = try await networkClient.performRequest(request: request)
                 self.recipes = response.recipes
                 self.isLoading = false
-            } catch {
-                self.errorMessage = error.localizedDescription
-                self.isLoading = false
-            }
+            } catch let networkError as NetworkError {
+                 self.errorMessage = networkError.errorDescription
+                 self.isLoading = false
+             } catch {
+                 self.errorMessage = "An unexpected error occurred."
+                 self.isLoading = false
+             }
         }
         
     }
