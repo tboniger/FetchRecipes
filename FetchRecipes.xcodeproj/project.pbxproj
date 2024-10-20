@@ -29,6 +29,27 @@
 		FADF1C3C2CC41D6B00124B1A /* FetchRecipesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FetchRecipesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		FAE639162CC55CEF003ECA49 /* Exceptions for "FetchRecipesTests" folder in "FetchRecipes" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				MockRequest.swift,
+				MockResponse.swift,
+				MockURLSession.swift,
+			);
+			target = FADF1C202CC41D6A00124B1A /* FetchRecipes */;
+		};
+		FAE639172CC55CEF003ECA49 /* Exceptions for "FetchRecipesTests" folder in "FetchRecipesTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				MockRequest.swift,
+				MockResponse.swift,
+				MockURLSession.swift,
+			);
+			target = FADF1C312CC41D6B00124B1A /* FetchRecipesTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		FADF1C232CC41D6A00124B1A /* FetchRecipes */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -37,6 +58,10 @@
 		};
 		FADF1C352CC41D6B00124B1A /* FetchRecipesTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				FAE639162CC55CEF003ECA49 /* Exceptions for "FetchRecipesTests" folder in "FetchRecipes" target */,
+				FAE639172CC55CEF003ECA49 /* Exceptions for "FetchRecipesTests" folder in "FetchRecipesTests" target */,
+			);
 			path = FetchRecipesTests;
 			sourceTree = "<group>";
 		};

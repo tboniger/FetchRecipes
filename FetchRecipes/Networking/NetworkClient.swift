@@ -10,9 +10,9 @@ import Foundation
 class NetworkClient {
     
     var jsonDecoder = JSONDecoder()
-    private let session: URLSession
+    private let session: URLSessionProtocol
     
-    init(session: URLSession = .shared) {
+    init(session: URLSessionProtocol = URLSession.shared) {
         self.session = session
     }
 
@@ -32,6 +32,8 @@ class NetworkClient {
             let decodedResponse = try self.jsonDecoder.decode(T.self, from: data)
             return decodedResponse
             
+        } catch let networkError as NetworkError {
+            throw networkError
         } catch let decodingError as DecodingError {
             throw NetworkError.decodingFailed(decodingError)
         } catch {
