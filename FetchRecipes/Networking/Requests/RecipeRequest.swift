@@ -10,7 +10,7 @@ import Foundation
 struct RecipeListRequest: Request {
     
     var path: String {
-        return "recipes-malformed.json"
+        return "recipes.json"
     }
     
 }

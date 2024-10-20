@@ -5,7 +5,7 @@
 //  Created by Timothy Böniger on 10/19/24.
 //
 
-struct Recipe: Decodable, Sendable {
+struct Recipe: Codable, Equatable, Sendable {
     
     let cuisine: String
     let name: String

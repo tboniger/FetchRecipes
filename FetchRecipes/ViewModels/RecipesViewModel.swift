@@ -15,10 +15,10 @@ class RecipesViewModel: ObservableObject {
     @Published var isLoading: Bool = true
     @Published var errorMessage: String?
     
-    private let networkClient: NetworkClient
+    private let networkClient: NetworkClientProtocol
     let imageLoader: ImageLoader
 
-    init(networkClient: NetworkClient = NetworkClient(),
+    init(networkClient: NetworkClientProtocol = NetworkClient(),
          imageLoader: ImageLoader = ImageLoader()) {
         self.networkClient = networkClient
         self.imageLoader = imageLoader
@@ -29,7 +29,7 @@ class RecipesViewModel: ObservableObject {
         isLoading = true
         errorMessage = nil
 
-        Task {
+
             do {
                 let request = RecipeListRequest()
                 let response: RecipeResponse = try await networkClient.performRequest(request: request)
@@ -42,7 +42,6 @@ class RecipesViewModel: ObservableObject {
                  self.errorMessage = "An unexpected error occurred."
                  self.isLoading = false
              }
-        }
         
     }
 

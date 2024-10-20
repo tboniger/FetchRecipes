@@ -6,6 +6,6 @@
 //
 import Foundation
 
-struct RecipeResponse: Decodable {
+struct RecipeResponse: Codable {
     let recipes: [Recipe]
 }

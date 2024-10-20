@@ -33,18 +33,20 @@
 		FAE639162CC55CEF003ECA49 /* Exceptions for "FetchRecipesTests" folder in "FetchRecipes" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				MockRequest.swift,
-				MockResponse.swift,
-				MockURLSession.swift,
+				Mocks/MockNetworkClient.swift,
+				Mocks/MockRequest.swift,
+				Mocks/MockResponse.swift,
+				Mocks/MockURLSession.swift,
 			);
 			target = FADF1C202CC41D6A00124B1A /* FetchRecipes */;
 		};
 		FAE639172CC55CEF003ECA49 /* Exceptions for "FetchRecipesTests" folder in "FetchRecipesTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				MockRequest.swift,
-				MockResponse.swift,
-				MockURLSession.swift,
+				Mocks/MockNetworkClient.swift,
+				Mocks/MockRequest.swift,
+				Mocks/MockResponse.swift,
+				Mocks/MockURLSession.swift,
 			);
 			target = FADF1C312CC41D6B00124B1A /* FetchRecipesTests */;
 		};

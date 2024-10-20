@@ -43,6 +43,9 @@ struct RecipeListView: View {
                             .padding(.vertical, 8)
                     }
                     .listStyle(PlainListStyle())
+                    .refreshable {
+                        await viewModel.recipes()
+                    }
                 }
             }
             .navigationTitle("Recipes")
